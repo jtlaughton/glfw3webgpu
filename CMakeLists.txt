@@ -13,3 +13,18 @@ if (GLFW_BUILD_COCOA)
     target_compile_options(glfw3webgpu PRIVATE -x objective-c)
     target_link_libraries(glfw3webgpu PRIVATE "-framework Cocoa" "-framework CoreVideo" "-framework IOKit" "-framework QuartzCore")
 endif()
+
+# Add Wayland support
+if (GLFW_BUILD_WAYLAND)
+    target_compile_definitions(glfw3webgpu PRIVATE _GLFW_WAYLAND)
+endif()
+
+# Add X11 support
+if (GLFW_BUILD_X11)
+    target_compile_definitions(glfw3webgpu PRIVATE _GLFW_X11)
+endif()
+
+# Add Win32 support
+if (GLFW_BUILD_WIN32)
+    target_compile_definitions(glfw3webgpu PRIVATE _GLFW_WIN32)
+endif()
